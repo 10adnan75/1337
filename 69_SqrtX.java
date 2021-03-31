@@ -1,3 +1,6 @@
+// Binary search approach
+// O(lg(x))
+
 class Solution {
     public int mySqrt(int x) {
         
