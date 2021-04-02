@@ -10,9 +10,7 @@ class Solution {
                 myMap.put(nums[i], 1);  
             }
         }
-        
-        int singleNo = 0;
-        
+                
         for(int k=0; k<nums.length; k++) {
             if(myMap.get(nums[k]) == 1) return nums[k];
         }
