@@ -22,7 +22,7 @@ class Solution {
             for (int i=0; i<n; ++i) {
                 for (int j=0; j<=words[i].size(); ++j) {
                     string st1 = words[i].substr(0,j); // prefix
-                    string st2 = words[i].substr(j);   //sufix           
+                    string st2 = words[i].substr(j);   //suffix           
                     if (m.count(st1) && isPalindrome(st2) && m[st1] != i) {
                         ans.push_back({i, m[st1]});    
                     }
