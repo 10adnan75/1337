@@ -1,10 +1,6 @@
 # L33T
 
-[https://leetcode.com/](leetcode)
-
----
-
-I will be uploading solutions to some of the problems available on leetcode. Stay tuned!
+I will be uploading solutions to some of the problems available on [leetcode](https://leetcode.com/). Stay tuned!
 
 ---
 
