@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        int length = 0;
+        /* int length = 0;
         ListNode temp = head;
         while (temp.next != null) {
             length++;
@@ -26,6 +26,14 @@ class Solution {
                 head = head.next;
             }
         }
-        return head;
-    }
+        return head; */
+            
+        // Two-pointer approach
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    } 
 }
