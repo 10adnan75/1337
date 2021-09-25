@@ -1,3 +1,5 @@
+// based on Sliding Window Algorithm
+
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.equals("")) {
