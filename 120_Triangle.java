@@ -23,6 +23,6 @@ class Solution {
                 }
             }
         }
-		return triangle.get(0).get(0); 
+        return triangle.get(0).get(0); 
     }
 }
