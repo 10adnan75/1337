@@ -18,7 +18,7 @@ class Solution {
 }
 */
 
-// Hash Map approach - Runtime: 5 ms, Memory: 42.2 MB
+// Hash Map approach - Runtime: 2 ms, Memory: 42.2 MB
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
