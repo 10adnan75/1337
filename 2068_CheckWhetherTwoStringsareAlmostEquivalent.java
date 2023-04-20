@@ -1,3 +1,4 @@
+/*
 class Solution {
     public boolean checkAlmostEquivalent(String word1, String word2) {
         HashMap<Character, Integer> m1 = new HashMap<>();
@@ -41,6 +42,24 @@ class Solution {
                 value2 = (int)m.getValue();
             }
             if (Math.abs(value1 - value2) > 3) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+*/
+
+class Solution {
+    public boolean checkAlmostEquivalent(String word1, String word2) {
+        int[] alpha = new int[26];
+        int len = word2.length();
+        for (int i=0; i<len; i++) {
+            alpha[word2.charAt(i) - 'a']++;
+            alpha[word1.charAt(i) - 'a']--;
+        }
+        for (int i : alpha) {
+            if (Math.abs(i) > 3) {
                 return false;
             }
         }
