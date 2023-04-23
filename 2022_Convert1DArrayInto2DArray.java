@@ -1,14 +1,15 @@
-// Runtime: 4 ms, Beats 73.43%
-// Memory: 52.6 MB, Beats 15.62%
+// Runtime: 3 ms, Beats 99.79%
+// Memory: 52.8 MB, Beats 11.5%
 class Solution {
     public int[][] construct2DArray(int[] original, int m, int n) {
         if (m * n != original.length) {
             return new int[][] {};
         }
         int[][] twoDArray = new int[m][n];
+        int idx = 0;
         for (int i=0; i<m; i++) {
             for (int j=0; j<n; j++) {
-                twoDArray[i][j] = original[i * n + j];
+                twoDArray[i][j] = original[idx++];
             }
         }
         return twoDArray;
@@ -33,6 +34,23 @@ class Solution {
             twoDArray[i][j] = original[idx];
             j++;
             
+        }
+        return twoDArray;
+    }
+}
+
+// Runtime: 4 ms, Beats 73.43%
+// Memory: 52.6 MB, Beats 15.62%
+class Solution {
+    public int[][] construct2DArray(int[] original, int m, int n) {
+        if (m * n != original.length) {
+            return new int[][] {};
+        }
+        int[][] twoDArray = new int[m][n];
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                twoDArray[i][j] = original[i * n + j];
+            }
         }
         return twoDArray;
     }
