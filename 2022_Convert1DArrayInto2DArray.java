@@ -1,6 +1,5 @@
-// My solution
 // Runtime: 4 ms, Beats 73.43%
-// Memory: 52.1 MB, Beats 51.75%
+// Memory: 52.6 MB, Beats 15.62%
 class Solution {
     public int[][] construct2DArray(int[] original, int m, int n) {
         if (m * n != original.length) {
@@ -16,8 +15,9 @@ class Solution {
     }
 }
 
+// My solution
 // Runtime: 4 ms, Beats 73.43%
-// Memory: 52.6 MB, Beats 15.62%
+// Memory: 52.1 MB, Beats 51.75%
 class Solution {
     public int[][] construct2DArray(int[] original, int m, int n) {
         if (m * n != original.length) {
