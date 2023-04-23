@@ -12,3 +12,22 @@ class Solution {
         return -1;
     }
 }
+
+// Improved performance 
+class Solution {
+    public int findLucky(int[] arr) {
+        int[] frequency = new int[501];
+        int start = Integer.MIN_VALUE;
+        for (int i : arr) {
+            frequency[i]++;
+            start = Math.max(start, i);
+        }
+        for (int i=start; i>0; i--) {
+            // System.out.println("frequency[" + i + "]: " + frequency[i]);
+            if (i == frequency[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
