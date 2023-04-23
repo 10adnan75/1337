@@ -6,11 +6,7 @@ class Solution {
         }
         List<Boolean> ans = new ArrayList<>();
         for (int candy : candies) {
-            if (extraCandies + candy >= greatestNumber) {
-                ans.add(true);
-            } else {
-                ans.add(false);
-            }
+            ans.add(extraCandies + candy >= greatestNumber);
         }
         return ans;
     }
