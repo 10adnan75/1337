@@ -28,8 +28,7 @@ class Solution {
         for (int i=0; i<n && j<n; i++, j++) {
             auxArr[j] = arr[i];
             if (arr[i] == 0 && j < n - 1) {
-                auxArr[j+1] = 0;
-                j++;
+                auxArr[++j] = 0;
             }
         }
         for (int i=0; i<n; i++) arr[i] = auxArr[i];
