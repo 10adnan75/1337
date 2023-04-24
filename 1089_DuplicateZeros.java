@@ -18,3 +18,20 @@ class Solution {
         }
     }
 }
+
+// Optimized performance
+class Solution {
+    public void duplicateZeros(int[] arr) {
+        int n = arr.length;
+        int[] auxArr = new int[n];
+        int j = 0;
+        for (int i=0; i<n && j<n; i++, j++) {
+            auxArr[j] = arr[i];
+            if (arr[i] == 0 && j < n - 1) {
+                auxArr[j+1] = 0;
+                j++;
+            }
+        }
+        for (int i=0; i<n; i++) arr[i] = auxArr[i];
+    }
+}
