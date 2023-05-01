@@ -27,3 +27,39 @@ class Solution {
         return;
     }
 }
+
+// My solution
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int[] ans = new int[m + n];
+        if (n == 0) return;
+        if (m == 0) {
+            for (int i=0; i<n; i++) {
+                nums1[i] = nums2[i];
+            }
+            return;
+        }
+        int i = 0, j = 0, idx = 0;
+        while (idx < ans.length && i < m && j < n) {
+            if (nums1[i] <= nums2[j]) {
+                ans[idx] = nums1[i];
+                i++;
+            } else {
+                ans[idx] = nums2[j];
+                j++;
+            }
+            idx++;
+        }
+        while (i < m) {
+            ans[idx] = nums1[i];
+            i++;
+            idx++;
+        }
+        while (j < n) {
+            ans[idx++] = nums2[j++];
+        }
+        for (idx = 0; idx < ans.length; idx++) {
+            nums1[idx] = ans[idx];
+        }
+    }
+}
