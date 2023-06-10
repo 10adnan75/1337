@@ -11,8 +11,7 @@ class Solution {
                 sb.append(sortedWords[i].substring(0, sortedWords[i].length() - 1));
             } else {
                 sb.append(sortedWords[i].substring(0, sortedWords[i].length() - 1) + " ");
-            }
-            
+            } 
         }
         return sb.toString();
     }
