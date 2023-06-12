@@ -29,7 +29,7 @@ class Solution {
     }
 }
 
-// Efficacious solution
+// Efficacious approach (Unsolved)
 class Solution {
     public int[] kWeakestRows(int[][] mat, int k) {
         int key = 0;
@@ -56,7 +56,7 @@ class Solution {
             ans[i] = soldiers[i];
             soldiers[i] = soldiers[minIdx];
             soldiers[minIdx] = ans[i];
-            ans[i] = ?;
+            ans[i] = ?; // I'm stuck here :(
         }
         return ans;
     }
