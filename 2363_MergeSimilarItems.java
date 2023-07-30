@@ -1,3 +1,4 @@
+// HashMap
 class Solution {
     public List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
         List<List<Integer>> ret = new ArrayList<>();
@@ -21,6 +22,29 @@ class Solution {
             l.add((int)entry.getKey());
             l.add((int)entry.getValue());
             ret.add(l);
+        }
+        return ret;
+    }
+}
+
+// Array
+class Solution {
+    public List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
+        int[] items = new int[1001];
+        for (int[] item : items1) {
+            items[item[0]] += item[1];
+        }
+        for (int[] item : items2) {
+            items[item[0]] += item[1];
+        }
+        List<List<Integer>> ret = new ArrayList<>();
+        for (int i=0; i<items.length; i++) {
+            if (items[i] != 0) {
+                List<Integer> l = new ArrayList<>();
+                l.add(i);
+                l.add(items[i]);
+                ret.add(l);    
+            }
         }
         return ret;
     }
