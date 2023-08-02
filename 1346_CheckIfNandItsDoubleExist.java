@@ -1,4 +1,6 @@
 // HashMap
+// Runtime: 8 ms, Beats 5.30%
+// Memory: 43.6 MB, Beats 6.99%
 class Solution {
     public boolean checkIfExist(int[] arr) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -15,6 +17,8 @@ class Solution {
 }
 
 // Linear Search
+// Runtime: 0 ms, Beats 100%
+// Memory: 41.4 MB, Beats 90.37%
 class Solution {
     public boolean checkIfExist(int[] arr) {
         for (int i=0; i<arr.length; i++) {
