@@ -29,6 +29,29 @@ class Solution {
     }
 }
 
+// My memory-optimized solution
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        List<String> ans = new ArrayList<>();
+        int i = 0;
+        while (i < nums.length) {
+            boolean f = false, flag = false;
+            String s = String.valueOf(nums[i]) + "";
+            while (i != nums.length - 1 && nums[i] == nums[i+1] - 1) {
+                f = true;
+                i++;
+            }
+            if (f) {
+                s += "->" + String.valueOf(nums[i++]);
+            } else { 
+                i++;
+            }
+            ans.add(s);
+        }
+        return ans;
+    }
+}
+
 // Editorial
 class Solution {
     public List<String> summaryRanges(int[] nums) {
