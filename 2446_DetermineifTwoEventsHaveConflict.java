@@ -23,3 +23,5 @@ class Solution {
         return Math.max(convertToMinutes(event1[0]), convertToMinutes(event2[0])) <= Math.min(convertToMinutes(event1[1]), convertToMinutes(event2[1]));
     }
 }
+
+// The s.substring() method takes less time than s.split()'s does.
