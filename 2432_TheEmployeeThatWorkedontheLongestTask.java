@@ -1,3 +1,4 @@
+// 2 ms
 class Solution {
     public int hardestWorker(int n, int[][] logs) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -21,5 +22,22 @@ class Solution {
                 emp = (int)entry.getKey();
         }
         return emp;
+    }
+}
+
+// 1 ms
+class Solution {
+    public int hardestWorker(int n, int[][] logs) {
+        int maxDiff = Integer.MIN_VALUE, minEmp = 0, prev = 0;
+        for (int[] log : logs) {
+            if (log[1] - prev > maxDiff) {
+                minEmp = log[0];
+                maxDiff = log[1] - prev;
+            } else if (log[1] - prev == maxDiff) {
+                minEmp = Math.min(minEmp, log[0]);
+            }
+            prev = log[1];
+        }
+        return minEmp;
     }
 }
