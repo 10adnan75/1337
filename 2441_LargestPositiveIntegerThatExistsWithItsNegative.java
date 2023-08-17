@@ -1,3 +1,4 @@
+// 5 ms
 class Solution {
     public int findMaxK(int[] nums) {
         Arrays.sort(nums);
@@ -14,5 +15,20 @@ class Solution {
             }
         }
         return -1;
+    }
+}
+
+// 2 ms
+class Solution {
+    public int findMaxK(int[] nums) {
+        int max = -1;
+        boolean ints[] = new boolean[2001];
+        for (int num : nums) {
+            if (ints[1000 - num]) {
+                max = Math.max(max, Math.abs(num));
+            }
+            ints[1000 + num] = true;
+        }
+        return max;
     }
 }
