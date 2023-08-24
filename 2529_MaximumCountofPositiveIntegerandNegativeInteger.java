@@ -1,3 +1,4 @@
+// My code
 class Solution {
     public int bruteForce(int[] nums) {
         int mxC = 0, mnC = 0;
@@ -54,5 +55,31 @@ class Solution {
             return bruteForce(nums);
         }
         return Math.max(lb, nums.length-(ub+1));
+    }
+}
+
+// Optimal run-time
+class Solution {
+    public int binarySearch(int[] nums, int X) {
+        int idx = 0, lo = 0, hi = nums.length - 1;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (nums[mid] < X) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        return lo;
+    }
+
+    public int maximumCount(int[] nums) {
+        if (nums[0] > 0 || nums[nums.length-1] < 0) {
+            return nums.length;
+        }
+        if (nums[0] == 0 && nums[nums.length-1] == 0) {
+            return 0;
+        }
+        return Math.max(binarySearch(nums, 0), nums.length-binarySearch(nums, 1));
     }
 }
