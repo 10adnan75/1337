@@ -1,4 +1,5 @@
-// 
+// Runtime: 0 ms, Beats 100%
+// Memory: 40.9 MB, Beats 70.00%
 class Solution {
     public void putAtIndex(int[] arr, int pos, int val) {
         for (int i=arr.length-1; i>pos; i--) {
