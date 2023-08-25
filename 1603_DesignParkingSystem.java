@@ -1,3 +1,4 @@
+// 9 ms
 class ParkingSystem {
     public int big, medium, small;
 
@@ -14,6 +15,19 @@ class ParkingSystem {
             case 3: return this.small-- > 0;
         }
         return true;
+    }
+}
+
+// 7 ms
+class ParkingSystem {
+    public int[] parking;
+
+    public ParkingSystem(int big, int medium, int small) {
+        this.parking = new int[] {big, medium, small};
+    }
+    
+    public boolean addCar(int carType) {
+        return parking[carType-1]-- > 0;
     }
 }
 
