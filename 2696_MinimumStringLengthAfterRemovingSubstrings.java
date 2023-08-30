@@ -8,8 +8,7 @@ class Solution {
         while (i < s.length()) {
             if (i == s.length() - 1) {
                 sb.append(s.charAt(i++));
-            }
-            else if ((s.charAt(i) == 'A' && s.charAt(i+1) == 'B') || (s.charAt(i) == 'C' && s.charAt(i+1) == 'D')) {
+            } else if ((s.charAt(i) == 'A' && s.charAt(i+1) == 'B') || (s.charAt(i) == 'C' && s.charAt(i+1) == 'D')) {
                 i += 2;
             } else {
                 sb.append(s.charAt(i++));
