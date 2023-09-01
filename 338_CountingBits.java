@@ -27,3 +27,22 @@ class Solution {
         return bits;
     }
 }
+
+// Runtime: 9 ms
+class Solution {
+    public int[] countBits(int n) {
+        int[] ans = new int[n+1];
+        for (int i=1; i<=n; i++) {
+            int c = 0;
+            int x = i;
+            while (x != 0) {
+                if (((x % 10) & 1) == 1) {
+                    c++;
+                }
+                x /= 2;
+            }
+            ans[i] = c;
+        }
+        return ans;
+    }
+}
