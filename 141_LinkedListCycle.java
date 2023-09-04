@@ -9,6 +9,7 @@
  *     }
  * }
  */
+// Using two-pointer
 public class Solution {
     public boolean hasCycle(ListNode head) {
         ListNode slow = head, fast = head;
@@ -18,6 +19,21 @@ public class Solution {
             if (slow == fast) {
                 return true;
             }
+        }
+        return false;
+    }
+}
+
+// Using counter
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        long counter = 0;
+        while (head != null) {
+            if (counter > 10000) {
+                return true;
+            }
+            counter++;
+            head = head.next;
         }
         return false;
     }
