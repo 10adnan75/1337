@@ -54,3 +54,53 @@ class Solution {
         return ans;
     }
 }
+
+// Less memory
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node getNode(int n,  Node head) {
+        int i = 0;
+        while (head != null) {
+            if (i++ == n) {
+                return head;
+            }
+            head = head.next;
+        }
+        return head;
+    }
+
+    public Node copyRandomList(Node head) {
+        int i = 0;
+        Node ans = new Node(0);
+        Node temp = ans, x = head;
+        Map<Node, Integer> randoms = new HashMap<>();
+        while (x != null) {
+            randoms.put(x, i++);
+            Node t = new Node(x.val);
+            temp.next = t;
+            temp = t;
+            x = x.next;
+        }
+        temp = ans.next;
+        while (temp != null) {
+            temp.random = (head.random == null) ? null : getNode(randoms.get(head.random), ans.next);
+            temp = temp.next;
+            head = head.next;
+        }
+        return ans.next;
+    }
+}
