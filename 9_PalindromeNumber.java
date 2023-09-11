@@ -1,22 +1,22 @@
 // Runtime: 7 ms, Beats 39.23%
 // Memory: 38.6 MB, Beats 100%
 class Solution {
-    public int reverse(int num, int sum) {
+	public int reverse(int num, int sum) {
 		if (num == 0) {
-		    return sum;
+			return sum;
 		}
 		return reverse(num/10, (sum*10+num%10));
-    }
-    
-    public boolean isPalindrome(int x) {
-        if (x < 0) {
+	}
+	
+	public boolean isPalindrome(int x) {
+		if (x < 0) {
 			return false;
 		} else if (x == reverse(x, 0)) {
 			return true;
 		} else {
 			return false;
 		}
-    }
+	}
 }
 
 // Runtime: 6 ms, Beats 54.16%
