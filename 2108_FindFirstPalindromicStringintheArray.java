@@ -18,7 +18,7 @@ class Solution {
     }
 }
 
-// Effecacious approach
+// Efficacious approach
 class Solution {
     public boolean isPalindrome(String s) {
         for (int i=0, j=s.length()-1; i<s.length() && j>=0; i++, j--) {
