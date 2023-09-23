@@ -15,7 +15,11 @@ class Solution {
             base += (n%b);
             n /= b;
         }
-        return isPalindrome(base);
+        String ans = "";
+        for (int i=base.length()-1; i>=0; i--) {
+            ans += base.charAt(i);
+        }
+        return isPalindrome(ans);
     }
 
     public boolean isStrictlyPalindromic(int n) {
