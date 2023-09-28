@@ -60,7 +60,7 @@ class Solution {
     }
 }
 
-// Fastest
+// Faster than the above two solutions
 class Solution {
     public int[] sortArrayByParity(int[] nums) {
         for (int i=0, prev=0; i<nums.length; i++) {
@@ -68,6 +68,29 @@ class Solution {
                 int temp = nums[prev];
                 nums[prev++] = nums[i];
                 nums[i] = temp; 
+            }
+        }
+        return nums;
+    }
+}
+
+// Fastest
+// 0 ms, beats 100%
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int lo = 0;
+        int hi = nums.length - 1;
+        while (lo < hi) {
+            if ((nums[lo]&1) == 0) {
+                lo++;
+            } else if ((nums[hi]&1) == 1) {
+                hi--;
+            } else {
+                int temp = nums[lo];
+                nums[lo] = nums[hi];
+                nums[hi] = temp;
+                lo++;
+                hi--;
             }
         }
         return nums;
