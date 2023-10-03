@@ -1,4 +1,4 @@
-// 1 ms
+// Brute force: 1 ms
 class Solution {
     public int numIdenticalPairs(int[] nums) {
         int pairs = 0;
@@ -13,7 +13,7 @@ class Solution {
     }
 }
 
-// 0 ms
+// Mathematics: 0 ms
 class Solution {
     public int numIdenticalPairs(int[] nums) {
         int c = 0;
@@ -28,5 +28,19 @@ class Solution {
             }
         }
         return c; 
+    }
+}
+
+// Hash map: 0 ms
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int c = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i=0; i<nums.length; i++) {
+            int val = map.getOrDefault(nums[i], 0);
+            map.put(nums[i], val+1);
+            c += val;
+        }
+        return c;
     }
 }
