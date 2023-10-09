@@ -1,3 +1,48 @@
+// Oct 2023, I am somewhat eloquent.
+class Solution {
+    public int lowerBound(int[] a, int x) {
+        int lo = 0, hi = a.length-1;
+        int lb = -1;
+        while (lo <= hi) {
+            int mid = lo + (hi-lo)/2;
+            if (a[mid] == x) {
+                lb = mid;
+                hi = mid - 1;
+            } else if (a[mid] > x) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return lb;
+    }
+
+    public int upperBound(int[] a, int x) {
+        int lo = 0, hi = a.length-1;
+        int ub = -1;
+        while (lo <= hi) {
+            int mid = lo + (hi-lo)/2;
+            if (a[mid] == x) {
+                ub = mid;
+                lo = mid + 1;
+            } else if (a[mid] > x) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return ub;
+    }
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = new int[2];
+        ans[0] = lowerBound(nums, target);
+        ans[1] = upperBound(nums, target);
+        return ans;
+    }
+}
+
+// Dec 2021, when I was naive.
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         if (nums.length == 0) {
