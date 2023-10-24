@@ -1,4 +1,4 @@
-// My code: dfs (2 ms)
+// My code: bfs (2 ms)
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
