@@ -14,7 +14,6 @@ class Solution {
 
     public int numSplits(String s) {
         int n = s.length();
-        int[][] aux = new int[n][2];
         int c = 0;
         for (int i=1; i<n; i++) {
             if (checkSplits(s.substring(0, i), s.substring(i, n))) {
@@ -24,4 +23,3 @@ class Solution {
         return c;
     }
 }
-
