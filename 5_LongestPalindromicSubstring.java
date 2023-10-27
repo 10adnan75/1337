@@ -1,30 +1,22 @@
+// Brute force
 class Solution {
+    public boolean isPalindrome(int l, int r, String s) {
+        while (l < r) {
+            if (s.charAt(l++) != s.charAt(r--)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public String longestPalindrome(String s) {
-        if (s == null || s.length() <= 1) {
-            return s;
-        }
-        if (s.length() == 2 && s.charAt(0) != s.charAt(1)) {
-            return String.valueOf(s.charAt(0));
-        }
-        int len = s.length();
-        int maxLen = 1;
-        boolean[][] dp = new boolean[len][len];
-        String longest = null;
-        for (int k=0; k<len; k++) {
-            for (int i=0; i<len-k; i++) {
-                int j = i + k;
-                if (s.charAt(i) == s.charAt(j) && (j-i <= 2 || dp[i+1][j-1])) {
-                    dp[i][j] = true;
-                    if (j-i+1 > maxLen) {
-                        maxLen = j - i + 1;
-                        longest = s.substring(i, j+1);
-                    }
+        for (int i=s.length(); i>0; i--) {
+            for (int j=0; j<=s.length()-i; j++) {
+                if (isPalindrome(j, j+i-1, s)) {
+                    return s.substring(j, j+i);
                 }
             }
         }
-        if (longest == null) {
-            return String.valueOf(s.charAt(0));
-        }
-        return longest;
+        return "";
     }
 }
