@@ -1,4 +1,4 @@
-// TLE
+// TLE :(
 class Solution {
     public int getMax(int[] arr) {
         int max = 0;
@@ -29,5 +29,27 @@ class Solution {
             arr[n-1] = min;
         }
         return -1;
+    }
+}
+
+// Beats 100% :)
+class Solution {
+    public int getWinner(int[] arr, int k) {
+        int max = Math.max(arr[0], arr[1]), streak = 1;
+        if (k == streak) {
+            return max;
+        }
+        for (int i=2; i<arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+                streak = 1;
+            } else {
+                streak++;
+            }
+            if (streak == k) {
+                return max;
+            }
+        }
+        return max;
     }
 }
