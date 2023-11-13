@@ -1,3 +1,4 @@
+// StringBuilder
 class Solution {
     public String sortVowels(String s) {
         List<Character> vowels = new ArrayList<>();
@@ -22,6 +23,32 @@ class Solution {
             ans.append(c);
         }
         return ans.toString();
+    }
+
+    public boolean isAVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' 
+            || c == 'U' || c == 'O' || c == 'I' || c == 'E' || c == 'A';
+    }
+}
+
+// char[]
+class Solution {
+    public String sortVowels(String s) {
+        List<Character> l = new ArrayList<>();
+        char[] ans = s.toCharArray();
+        for (char c: ans) {
+            if (isAVowel(c)) {
+                l.add(c);
+            }
+        }
+        Collections.sort(l);
+        int listIdx = 0;
+        for (int i=0; i<ans.length; i++) {
+            if (isAVowel(ans[i])) {
+                ans[i] = l.get(listIdx++); 
+            } 
+        }
+        return new String(ans);
     }
 
     public boolean isAVowel(char c) {
