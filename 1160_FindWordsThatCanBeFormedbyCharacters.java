@@ -1,3 +1,32 @@
+// Optimized :)
+class Solution {
+    int[] freq = new int[26];
+
+    public boolean check(String word) {
+        int[] aux = Arrays.copyOf(freq, freq.length);
+        for (char ch: word.toCharArray()) {
+            if (aux[ch-'a'] == 0) {
+                return false;
+            }
+            aux[ch-'a']--;
+        }
+        return true;
+    }
+
+    public int countCharacters(String[] words, String chars) {
+        int c = 0;
+        for (char ch: chars.toCharArray()) {
+            freq[ch-'a']++;
+        }
+        for (String word: words) {
+            if (check(word)) {
+                c += word.length();
+            }
+        }
+        return c;
+    }
+}
+
 // My code
 class Solution {
     public int[] character = new int[26];
