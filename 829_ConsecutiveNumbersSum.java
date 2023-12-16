@@ -1,3 +1,4 @@
+// My code: TLE :(
 class Solution {
     public int consecutiveNumbersSum(int n) {
         int c = 0;
@@ -11,6 +12,20 @@ class Solution {
             }
             if (sum == n) {
                 c++;       
+            }
+        }
+        return c;
+    }
+}
+
+// 2 ms
+class Solution {
+    public int consecutiveNumbersSum(int n) {
+        int sum = 0, c = 0;
+        for (int i=1; sum<n; i++) {
+            sum += i;
+            if ((n-sum) % i == 0) {
+                c++;
             }
         }
         return c;
