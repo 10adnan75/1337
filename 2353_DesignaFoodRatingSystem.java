@@ -67,3 +67,61 @@ class FoodRatings {
  * obj.changeRating(food,newRating);
  * String param_2 = obj.highestRated(cuisine);
  */
+
+// PriorityQueue
+class Food implements Comparable<Food> {
+    public int rating;
+    public String name;
+
+    public Food(int rating, String name) {
+        this.rating = rating;
+        this.name = name;
+    }
+
+    public int compareTo(Food other) {
+        if (this.rating == other.rating) {
+            return this.name.compareTo(other.name);
+        }
+        return Integer.compare(this.rating, other.rating) * -1;
+    }
+}
+
+class FoodRatings {
+    private Map<String, Integer> foodRatings;
+    private Map<String, String> foodCuisines;
+    private Map<String, PriorityQueue<Food>> M;
+    public int N;
+
+    public FoodRatings(String[] foods, String[] cuisines, int[] ratings) {
+        this.N = foods.length;
+        this.foodRatings = new HashMap<>();
+        this.foodCuisines = new HashMap<>();
+        this.M = new HashMap<>();
+        for (int i=0; i<N; i++) {
+            this.foodRatings.put(foods[i], ratings[i]);
+            this.foodCuisines.put(foods[i], cuisines[i]);
+            M.computeIfAbsent(cuisines[i], k -> new PriorityQueue<>()).add(new Food(ratings[i], foods[i]));
+        }
+    }
+    
+    public void changeRating(String food, int newRating) {
+        this.foodRatings.put(food, newRating);
+        this.M.get(this.foodCuisines.get(food)).add(new Food(newRating, food));
+    }
+    
+    public String highestRated(String cuisine) {
+        Food highestRated = M.get(cuisine).peek();
+        while (foodRatings.get(highestRated.name) != highestRated.rating) {
+            M.get(cuisine).poll();
+            highestRated = M.get(cuisine).peek();
+        }        
+        return highestRated.name;
+    }
+}
+
+/**
+ * Your FoodRatings object will be instantiated and called as such:
+ * FoodRatings obj = new FoodRatings(foods, cuisines, ratings);
+ * obj.changeRating(food,newRating);
+ * String param_2 = obj.highestRated(cuisine);
+ */
