@@ -1,3 +1,23 @@
+// Optimized
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int[] freq = new int[10001];
+        for (int n: nums) {
+            freq[n]++;
+        }
+        int missing = 0, repeated = 0;
+        for (int i=freq.length-1; i>0; i--) {
+            if (freq[i] == 0) {
+                missing = i;
+            }
+            if (freq[i] == 2) {
+                repeated = i;
+            }
+        }
+        return new int[] {repeated, missing};
+    }
+}
+
 // Accepted solution, 3 ms
 class Solution {
     public int[] findErrorNums(int[] nums) {
