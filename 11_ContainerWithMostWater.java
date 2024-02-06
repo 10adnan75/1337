@@ -30,3 +30,19 @@ class Solution {
 }
 
 // My code: Optimized
+class Solution {
+    public int maxArea(int[] height) {
+        int max = 0, lo = 0, hi = height.length-1;
+        while (lo != hi) {
+            int h = Math.min(height[lo], height[hi]);
+            max = Math.max(max, h*(hi-lo));
+            while (height[lo] <= h && lo < hi) {
+                lo++;
+            }
+            while (height[hi] <= h && lo < hi) {
+                hi--;
+            }
+        }
+        return max;
+    }
+}
