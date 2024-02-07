@@ -20,3 +20,38 @@ class Solution {
         return sb.toString();
     }
 }
+
+// My code
+class Solution {
+    public Character getKey(int val, Map<Character, Integer> map) {
+        char key = ' ';
+        for (Map.Entry e: map.entrySet()) {
+            if ((int)e.getValue() == val) {
+                key = (char)e.getKey();
+                map.remove(key);
+                break;
+            }
+        }
+        return key;
+    }
+
+    public String frequencySort(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        StringBuilder sb = new StringBuilder();
+        for (char c: s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0)+1);
+        }
+        for (Map.Entry e: map.entrySet()) {
+            pq.offer((int)e.getValue());
+        }
+        while (!pq.isEmpty()) {
+            int val = pq.poll();
+            char key = getKey(val, map);
+            while (val-- > 0) {
+                sb.append(key);
+            }
+        }
+        return sb.toString();
+    }
+}
