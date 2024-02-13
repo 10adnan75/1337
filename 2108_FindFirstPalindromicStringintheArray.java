@@ -18,6 +18,27 @@ class Solution {
     }
 }
 
+// My optimized code
+class Solution {
+    public String firstPalindrome(String[] words) {
+        for (String word: words) {
+            if (isPalindrome(word.toCharArray())) {
+                return word;
+            }
+        }
+        return "";
+    }
+
+    public boolean isPalindrome(char[] s) {
+        for (int i=0; i<s.length/2; i++) {
+            if (s[i] != s[s.length-i-1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 // Efficacious approach
 class Solution {
     public boolean isPalindrome(String s) {
