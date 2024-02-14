@@ -1,3 +1,4 @@
+// 4 ms
 class Solution {
     public int[] rearrangeArray(int[] nums) {
         int n = nums.length, i = 0, j = 0;
@@ -16,5 +17,23 @@ class Solution {
             nums[idx++] = neg[j++];
         }
         return nums;
+    }
+}
+
+// 3 ms
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int pos = 0, neg = 1;
+        int[] ans = new int[nums.length];
+        for (int n: nums) {
+            if (n > 0) {
+                ans[pos] = n;
+                pos += 2;
+            } else {
+                ans[neg] = n;
+                neg += 2;
+            }
+        }
+        return ans;
     }
 }
