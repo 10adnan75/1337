@@ -24,3 +24,22 @@ class Solution {
         return map.size();
     }
 }
+
+// Accepted :)
+class Solution {
+    public int findLeastNumOfUniqueInts(int[] arr, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int a: arr) {
+            map.put(a, map.getOrDefault(a, 0)+1);
+        }
+        PriorityQueue<Integer> pq = new PriorityQueue<>(map.values());
+        int c = 0;
+        while (!pq.isEmpty()) {
+            c += pq.poll();
+            if (c > k) {
+                return pq.size() + 1;
+            }
+        }
+        return 0;
+    }
+}
