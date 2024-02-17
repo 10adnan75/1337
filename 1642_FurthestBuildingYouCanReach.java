@@ -140,3 +140,24 @@ class Solution {
 }
 
 // All test cases passed
+class Solution {
+    public int furthestBuilding(int[] heights, int bricks, int ladders) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i=1; i<heights.length; i++) {
+            int height = heights[i] - heights[i-1];
+            if (height > 0) {
+                bricks -= height;
+                pq.offer(height);
+                if (bricks < 0) {
+                    bricks += pq.poll();
+                    if (ladders > 0) {
+                        ladders--;
+                    } else {
+                        return i-1;
+                    }
+                }
+            }
+        }
+        return heights.length-1;
+    }
+}
