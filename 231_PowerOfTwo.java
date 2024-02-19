@@ -24,3 +24,20 @@ class Solution {
         return (n > 0) && (n & (n-1)) == 0; 
     }
 }
+
+// My code
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        int i = 0;
+        while (i <= n) {
+            double p = Math.pow(2, i);
+            if (p == n) {
+                return true;
+            } else if (p > n) {
+                return false;
+            }
+            i++;
+        }
+        return false;
+    }
+}
