@@ -96,3 +96,22 @@ class Solution {
         return nums;
     }
 }
+
+// Another approach :)
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int even = 0;
+        for (int i=0; i<nums.length; i++) {
+            if ((nums[i]&1) == 0) {
+                swap(nums, even++, i);
+            }
+        }
+        return nums;
+    }
+    
+    public void swap(int[] a, int x, int y) {
+        int t = a[x];
+        a[x] = a[y];
+        a[y] = t;
+    }
+}
