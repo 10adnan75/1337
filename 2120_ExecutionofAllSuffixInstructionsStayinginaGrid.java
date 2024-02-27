@@ -3,10 +3,10 @@ class Solution {
         int c = 0;
         for (int i=0; i<s.length(); i++) {
             switch(s.charAt(i)) {
-                case 'L':   y--; break; 
-                case 'R':   y++; break;
-                case 'U':   x--; break;
-                case 'D':   x++; break;
+                case 'L': y--; break; 
+                case 'R': y++; break;
+                case 'U': x--; break;
+                case 'D': x++; break;
             }
             if (x>=n || y>=n || x<0 || y<0) {
                 break;
