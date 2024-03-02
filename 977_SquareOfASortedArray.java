@@ -14,3 +14,21 @@ class Solution {
         return sortedSquaresArr;
     }
 }
+
+// My code
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int[] aux = new int[10001];
+        for (int n: nums) {
+            aux[Math.abs(n)]++;
+        }
+        for (int i=0, idx=0; i<aux.length; i++) {
+            if (aux[i] != 0) {
+                while (aux[i]-- > 0) {
+                    nums[idx++] = i*i;
+                }
+            }
+        }
+        return nums;
+    }
+}
