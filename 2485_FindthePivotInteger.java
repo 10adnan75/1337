@@ -26,3 +26,26 @@ class Solution {
         return sum == ans * ans ? ans : -1;
     }
 }
+
+// Naive
+class Solution {
+    public int pivotInteger(int n) {
+        for (int i=1; i<=n; i++) {
+            if (findPivot(i, n)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean findPivot(int x, int n) {
+        int sum = 0;
+        for (int i=1; i<=x; i++) {
+            sum += i;
+        }
+        for (int i=x; i<=n; i++) {
+            sum -= i;
+        }
+        return sum == 0;
+    }
+}
