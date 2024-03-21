@@ -59,7 +59,7 @@ class Solution {
             head = head.next;
         }
         int i = 0;
-        head = new ListNode(l.get(i++));
+        head = new ListNode(l.get(i++)); // trivial code (the program still works even if it is omitted) 
         while (i < l.size()) {
             ListNode newNode = new ListNode(l.get(i++), head);
             head = newNode;
