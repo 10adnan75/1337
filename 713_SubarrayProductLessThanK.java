@@ -18,3 +18,23 @@ class Solution {
          return res;
     }
 }
+
+// My code: naive :(
+class Solution {
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        int c = 0, i = 0;
+        while (i < nums.length) {
+            int j = i, prod = 1;
+            while (j < nums.length) {
+                prod *= nums[j];
+                if (prod >= k) {
+                    break;
+                }
+                c++;
+                j++;
+            }
+            i++;
+        }
+        return c;
+    }
+}
