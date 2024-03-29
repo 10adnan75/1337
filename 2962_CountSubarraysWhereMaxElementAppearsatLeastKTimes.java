@@ -1,3 +1,4 @@
+// Brute Force: TLE :(
 class Solution {
     public long countSubarrays(int[] nums, int k) {
         long c = 0;
@@ -20,3 +21,5 @@ class Solution {
         return c;
     }
 }
+
+// Sliding Window: Accepted :)
