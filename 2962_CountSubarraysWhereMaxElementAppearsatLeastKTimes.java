@@ -23,3 +23,25 @@ class Solution {
 }
 
 // Sliding Window: Accepted :)
+class Solution {
+    public long countSubarrays(int[] nums, int k) {
+        long max = Long.MIN_VALUE, c = 0, left = 0, right = 0, ans = 0;
+        for (int num: nums) {
+            max = Math.max(max, num);
+        }
+        while (right < nums.length || left > right) {
+            if (nums[(int)right] == max) {
+                c++;
+            }
+            while (c >= k) {
+                if (nums[(int)left] == max) {
+                    c--;
+                }
+                left++;
+                ans += nums.length - right;
+            }
+            right++;
+        }
+        return ans;
+    }
+}
