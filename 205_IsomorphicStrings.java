@@ -1,3 +1,4 @@
+// intuitive approach - 16 ms
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character, Character> map1 = new HashMap<>();
@@ -24,8 +25,26 @@ class Solution {
     }
 }
 
-// redundancy elimination
+// redundancy elimination - 11 ms
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        return helper(s, t) && helper(t, s);
+    }
 
+    public boolean helper(String s, String t) {
+        Map<Character, Character> map = new HashMap<>();
+        for (int i=0; i<s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                if (map.get(s.charAt(i)) != t.charAt(i)) {
+                    return false;
+                }
+            } else {
+                map.put(s.charAt(i), t.charAt(i));
+            }
+        }
+        return true;
+    }
+}
 
 // 43/45 test cases passed! (need to work on this)
 class Solution {
