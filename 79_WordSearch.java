@@ -1,13 +1,13 @@
-public class Solution {
-    
+class Solution {
     public boolean exist(char[][] board, String word) {
-        if (board == null || board.length == 0 || board[0].length == 0) {
+        int x = board.length, y = board[0].length;
+        if (x == 0 || y == 0) {
             return false;
         }
-        boolean[][] visited = new boolean[board.length][board[0].length];
-        for (int i=0; i<board.length; i++) {
-            for (int j=0; j< board[0].length; j++) {
-                if (dfs(board, visited, i, j, word, 0)) {
+        boolean[][] map = new boolean[x][y];
+        for (int i=0; i<x; i++) {
+            for (int j=0; j<y; j++) {
+                if (dfs(board, map, i, j, x, y, word, 0)) {
                     return true;
                 }
             }
@@ -15,19 +15,16 @@ public class Solution {
         return false;
     }
 
-    private boolean dfs(char[][] board, boolean[][] visited, int x, int y, String word, int k) {
-        if (word.length() == k) {
+    public boolean dfs(char[][] board, boolean[][] map, int i, int j, int x, int y, String word, int c) {
+        if (word.length() == c) {
             return true;
         }
-        if (x<0 || x>=board.length || y<0 || y>=board[0].length || visited[x][y] || word.charAt(k)!=board[x][y]) {
+        if (i < 0 || j < 0 || i >= x || j >= y || map[i][j] || word.charAt(c) != board[i][j]) {
             return false;
         }
-        visited[x][y] = true;
-        boolean ress = dfs(board, visited, x+1, y, word, k+1) 
-                    || dfs(board, visited, x-1, y, word, k+1) 
-                    || dfs(board, visited, x, y+1, word, k+1) 
-                    || dfs(board, visited, x, y-1, word, k+1);
-        visited[x][y] = false;
-        return ress;
+        map[i][j] = true;
+        boolean ans = dfs(board, map, i+1, j, x, y, word, c+1) || dfs(board, map, i, j+1, x, y, word, c+1) || dfs(board, map, i-1, j, x, y, word, c+1) || dfs(board, map, i, j-1, x, y, word, c+1);
+        map[i][j] = false;
+        return ans;
     }
 }
