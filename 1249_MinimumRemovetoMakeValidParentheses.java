@@ -27,3 +27,33 @@ class Solution {
         return sb.toString();
     }
 }
+
+// My code
+class Solution {
+    public String minRemoveToMakeValid(String s) {
+        String ans = "";
+        char[] ch = s.toCharArray();
+        Stack<Integer> stack = new Stack<>();
+        for (int i=0; i<s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                stack.push(i);
+            } else if (c == ')') {
+                if (!stack.empty()) {
+                    stack.pop();
+                } else {
+                    ch[i] = '$';
+                }
+            }
+        }
+        while (!stack.empty()) {
+            ch[stack.pop()] = '$';
+        }
+        for (char c: ch) {
+            if (c != '$') {
+                ans += c;
+            }
+        }
+        return ans;
+    }
+}
