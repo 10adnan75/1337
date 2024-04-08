@@ -35,3 +35,27 @@ class Solution {
         return c;
     }
 }
+
+// need to optimize this!
+class Solution {
+    public int countStudents(int[] students, int[] sandwiches) {
+        int c = 0, n = students.length, iter = 0;
+        Queue<Integer> q = new LinkedList<>();
+        Stack<Integer> s = new Stack<>();
+        for (int i=0; i<n; i++) {
+            q.offer(students[i]);
+            s.push(sandwiches[n-1-i]);
+        }
+        do {
+            if (s.peek() == q.peek()) {
+                s.pop();
+                q.poll();
+                c++;
+            } else {
+                q.offer(q.poll());
+            }
+            iter++;
+        } while (!q.isEmpty() && !s.isEmpty() && iter < 269); 
+        return n - c;
+    }
+}
