@@ -1,3 +1,4 @@
+// dfs
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -42,6 +43,45 @@ class Solution {
         String sum = "";
         for (int i=0; i<size; i++) {
             sum += arr[i];
+        }
+        return sum;
+    }
+}
+
+// bfs
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        int sum = 0;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            TreeNode n = q.poll();
+            if (n.left != null) {
+                n.left.val += n.val*10;
+                q.offer(n.left);
+            }
+            if (n.right != null) {
+                n.right.val += n.val*10;
+                q.offer(n.right);
+            }
+            if (n.left == null && n.right == null) {
+                sum += n.val;
+            }
         }
         return sum;
     }
