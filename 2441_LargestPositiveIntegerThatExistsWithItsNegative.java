@@ -32,3 +32,18 @@ class Solution {
         return max;
     }
 }
+
+// 7 ms
+class Solution {
+    public int findMaxK(int[] nums) {
+        int max = -1;
+        Set<Integer> set = new HashSet<>();
+        for (int n: nums) {
+            set.add(n);
+            if (set.contains(n) && set.contains(-n)) {
+                max = Math.max(max, Math.abs(n));
+            }
+        }
+        return max;
+    }
+}
