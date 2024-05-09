@@ -1,3 +1,4 @@
+// Auxiliary array
 class Solution {
     public String[] findRelativeRanks(int[] score) {
         int n = score.length;
@@ -22,6 +23,29 @@ class Solution {
         }
         for (int i=0; i<n; i++) {
             ans[i] = map.get(score[i]);
+        }
+        return ans;
+    }
+}
+
+// Priority queue
+class Solution {
+    public String[] findRelativeRanks(int[] score) {
+        String[] ans = new String[score.length];
+        Queue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        Map<Integer, Integer> map = new HashMap<>();
+        int i = 0;
+        for (int s: score) {
+            pq.add(s);
+            map.put(s, i++);
+        }
+        i = 0;
+        while (i < 3 && !pq.isEmpty()) {
+            ans[map.get(pq.poll())] = i == 0 ? "Gold Medal" : i == 1 ? "Silver Medal" : "Bronze Medal";
+            i++;
+        }
+        while (!pq.isEmpty()) {
+            ans[map.get(pq.poll())] = ++i+"";
         }
         return ans;
     }
