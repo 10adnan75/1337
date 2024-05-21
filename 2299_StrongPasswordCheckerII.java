@@ -1,3 +1,4 @@
+// 1 ms
 class Solution {
     public boolean strongPasswordCheckerII(String password) {
         int l = password.length();
@@ -28,3 +29,5 @@ class Solution {
         return true;
     }
 }
+
+// 0 ms
