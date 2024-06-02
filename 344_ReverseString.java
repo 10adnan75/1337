@@ -1,3 +1,4 @@
+// 1 ms
 class Solution {
     public void reverseString(char[] s) {
         int lo=0, hi=s.length-1;
@@ -9,7 +10,7 @@ class Solution {
     }
 }
 
-// My code
+// My code: 0 ms
 class Solution {
     public void reverseString(char[] s) {
         int n = s.length;
