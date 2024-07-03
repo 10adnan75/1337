@@ -14,3 +14,19 @@ class Solution {
         }
     }
 }
+
+// My code
+class Solution {
+    public void sortColors(int[] nums) {
+        int[] freq = new int[3];
+        for (int color: nums) {
+            freq[color]++;
+        }
+        int id = 0;
+        for (int i=0; i<3; i++) {
+            while (freq[i]-- > 0) {
+                nums[id++] = i;
+            }
+        }
+    }
+}
