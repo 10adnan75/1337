@@ -31,12 +31,20 @@ class ListNode {
 
 class Solution {
     public int findTheWinner(int n, int k) {
+        if (k == 1) {
+            return n;
+        }
         ListNode head = createList(n);
         ListNode temp = head;
-        while (n-- > 1) {
-            
+        while (n-- > 0) {
+            int c = k;
+            while (c-- > 2) {
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            temp = temp.next;
         }
-        return 0;
+        return temp.data;
     }
 
     public ListNode createList(int n) {
@@ -50,6 +58,7 @@ class Solution {
             temp = newNode;
         }
         temp.data = n;
+        temp.next = head;
         return head;
     }
 }
