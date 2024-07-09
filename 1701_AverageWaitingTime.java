@@ -21,7 +21,7 @@ class Solution {
         int time = customers[0][0];
         for (int[] customer: customers) {
             time = customer[0] > time ? customer[0] + customer[1] : time + customer[1];
-            avg += (double)(time - customer[0]);
+            avg += time - customer[0];
         }
         return avg / customers.length;
     }
