@@ -20,12 +20,11 @@ class Solution {
     public int minOperations(String[] logs) {
         Stack<String> path = new Stack<>();
         for (String log: logs) {
-            char c = log.charAt(1);
-            if (c == '.') {
+            if (log.equals("../")) {
                 if (!path.empty()) {
                     path.pop();
                 }
-            } else if (c != '/') {
+            } else if (!log.equals("./")) {
                 path.push(log);
             }
         }
