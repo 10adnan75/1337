@@ -14,3 +14,19 @@ class Solution {
         return false;
     }
 }
+
+// July 12, 2024
+class Solution {
+    public boolean threeConsecutiveOdds(int[] arr) {
+        for (int i=2; i<arr.length; i++) {
+            if (check(arr[i-2]) && check(arr[i-1]) && check(arr[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean check(int n) {
+        return (n&1) == 1;
+    }
+}
