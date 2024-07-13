@@ -43,3 +43,31 @@ class Solution {
         return ans;
     }
 }
+
+// My code
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        int[][] freq = new int[1001][2];
+        int n = 0, i = 0;
+        List<Integer> ans = new ArrayList<>();
+        for (int idx: nums1) {
+            freq[idx][0]++;
+        }
+        for (int idx: nums2) {
+            freq[idx][1]++;
+        }
+        for (int[] row: freq) {
+            i = Math.min(row[0], row[1]);
+            while (i-- > 0) {
+                ans.add(n);
+            }
+            n++;
+        }
+        int[] arr = new int[ans.size()];
+        n = 0;
+        for (int idx: ans) {
+            arr[n++] = idx;
+        }
+        return arr;
+    }
+}
