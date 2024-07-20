@@ -37,3 +37,23 @@ class Solution {
 }
 
 // 
+class Solution {
+    public int[][] restoreMatrix(int[] rowSum, int[] colSum) {
+        int m = rowSum.length, n = colSum.length, i = 0, j = 0;
+        int[][] ans = new int[m][n];
+        while (i < m && j < n) {
+            if (rowSum[i] < colSum[j]) {
+                ans[i][j] = rowSum[i];
+                colSum[j] -= rowSum[i];
+                rowSum[i] -= rowSum[i];
+                i++;
+            } else {
+                ans[i][j] = colSum[j];
+                rowSum[i] -= colSum[j];
+                colSum[j] -= colSum[j];
+                j++;
+            }
+        }
+        return ans;
+    }
+}
