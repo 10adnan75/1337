@@ -56,7 +56,7 @@ class Solution {
     }
 }
 
-// Finally solved this question on July 24, 2024
+// Finally solved this question on July 24, 2024.
 class Solution {
     public int[] frequencySort(int[] nums) {
         int[] freq = new int[201];
@@ -69,8 +69,8 @@ class Solution {
             if (freq[i] != 0) {
                 int key = freq[i];
                 List<Integer> l = new ArrayList<>();
-                if (map.containsKey(freq[i])) {
-                    l = map.get(freq[i]);
+                if (map.containsKey(key)) {
+                    l = map.get(key);
                 }
                 l.add(i-100);
                 map.put(key, l);
