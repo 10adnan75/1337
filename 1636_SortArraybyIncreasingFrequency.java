@@ -55,3 +55,41 @@ class Solution {
         return ans;
     }
 }
+
+// Finally solved this question on July 24, 2024
+class Solution {
+    public int[] frequencySort(int[] nums) {
+        int[] freq = new int[201];
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int i: nums) {
+            freq[i+100]++;
+        }
+        for (int i=0; i<freq.length; i++) {
+            if (freq[i] != 0) {
+                int key = freq[i];
+                List<Integer> l = new ArrayList<>();
+                if (map.containsKey(freq[i])) {
+                    l = map.get(freq[i]);
+                }
+                l.add(i-100);
+                map.put(key, l);
+                if (!pq.contains(key)) {
+                    pq.offer(key);
+                }
+            }
+        }
+        int id = 0;
+        while (!pq.isEmpty()) {
+            int c = pq.poll();
+            List<Integer> l = map.get(c);
+            for (int i=l.size()-1; i>=0; i--) {
+                int ct = c;
+                while (ct-- > 0) {
+                    nums[id++] = l.get(i);
+                }
+            }
+        }
+        return nums;
+    }
+}
