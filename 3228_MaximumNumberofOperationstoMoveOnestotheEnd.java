@@ -32,3 +32,30 @@ class Solution {
         return c;
     }
 }
+
+// Smart Greedy + Basic Math :)
+class Solution {
+    public int maxOperations(String s) {
+        boolean z = true;
+        int c = s.length()-1, max = 0;
+        while (c >=0 && s.charAt(c) == '1') {
+            c--;
+        }
+        for (int i=c-1, zero=1; i>=0; i--) {
+            if (s.charAt(i) == '1') {
+                max += zero;
+                z = false;
+            }
+            if (s.charAt(i) == '0') {
+                if (z) {
+                    continue;
+                }
+                if (i != c-1) {
+                    zero++;
+                    z = true;
+                }
+            }
+        }
+        return max;
+    }
+}
