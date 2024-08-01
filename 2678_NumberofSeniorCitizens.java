@@ -13,3 +13,16 @@ class Solution {
         return c;
     }
 }
+
+// Aug 1, 2024.
+class Solution {
+    public int countSeniors(String[] details) {
+        int c = 0;
+        for (String d: details) {
+            if (Integer.valueOf(d.substring(11, 13)) > 60) {
+                c++;
+            }
+        }
+        return c;
+    }
+}
