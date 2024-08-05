@@ -61,3 +61,20 @@ class Solution {
         return "";
     }
 }
+
+// Aug 6, 2024
+class Solution {
+    public String kthDistinct(String[] arr, int k) {
+        List<String> l = new ArrayList<>();
+        Map<String, Integer> m = new HashMap<>();
+        for (String s: arr) {
+            m.put(s, m.getOrDefault(s, 0) + 1);
+        }
+        for (String s: arr) {
+            if (m.get(s) == 1) {
+                l.add(s);
+            }
+        }
+        return l.size() < k ? "" : l.get(k-1);
+    }
+}
