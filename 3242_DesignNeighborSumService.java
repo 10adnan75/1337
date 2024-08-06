@@ -5,11 +5,10 @@ class neighborSum {
 
     public neighborSum(int[][] grid) {
         this.N = grid.length;
-        this.grid = new int[this.N][this.N];
+        this.grid = grid;
         this.map = new TreeMap<>();
         for (int i=0; i<N; i++) {
             for (int j=0; j<N; j++) {
-                this.grid[i][j] = grid[i][j];
                 this.map.put(grid[i][j], new int[] {i, j});
             }
         }
