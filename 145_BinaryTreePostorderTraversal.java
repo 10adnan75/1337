@@ -55,3 +55,41 @@ class Solution {
         return ans;
     }
 }
+
+// Aug 25, 2024
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private List<Integer> l = new ArrayList<>();
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        dfs(root);
+        return this.l;
+    }
+
+    public void dfs(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        if (node.left != null) {
+            dfs(node.left);
+        }
+        if (node.right != null) {
+            dfs(node.right);
+        }
+        l.add(node.val);
+    }
+}
