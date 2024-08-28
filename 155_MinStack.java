@@ -107,3 +107,48 @@ class MinStack {
         return (int)this.stack.min;
     }
 }
+
+// Somewhat optimized I guess
+class MinStack {
+    private MyStack stack;
+
+    private static class MyStack {
+        private final long data;
+        private final long min;
+        private final MyStack next, prev;
+
+        public MyStack() {
+            this.data = 0;
+            this.min = Integer.MAX_VALUE;
+            this.next = null;
+            this.prev = null;
+        }
+
+        public MyStack(long data, long min, MyStack next, MyStack prev) {
+            this.data = data;
+            this.min = min;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+
+    public MinStack() {
+        this.stack = new MyStack();
+    }
+
+    public void push(int val) {
+        this.stack = (this.stack.next == null && this.stack.prev == null) ? new MyStack(val, val, new MyStack(), null) : new MyStack(val, Math.min(this.stack.min, val), new MyStack(), this.stack);
+    }
+
+    public void pop() {
+        this.stack = (this.stack.prev == null) ? new MyStack() : this.stack.prev;
+    }
+
+    public int top() {
+        return (int)this.stack.data;
+    }
+
+    public int getMin() {
+        return (int)this.stack.min;
+    }
+}
