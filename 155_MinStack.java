@@ -58,3 +58,52 @@ class MinStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+
+// Aug 27, 2024
+class MinStack {
+    private MyStack stack;
+
+    private static class MyStack {
+        private long data;
+        private long min;
+        private MyStack next, prev;
+
+        public MyStack() {
+            this.data = 0;
+            this.min = Integer.MAX_VALUE;
+            this.next = null;
+            this.prev = null;
+        }
+    }
+
+    public MinStack() {
+        this.stack = new MyStack();
+    }
+
+    public void push(int val) {
+        if (this.stack.next == null && this.stack.prev == null) {
+            this.stack.data = val;
+            this.stack.min = val;
+            this.stack.next = new MyStack();
+            return;
+        }
+        MyStack newStack = this.stack.next;
+        newStack.data = val;
+        newStack.min = Math.min(this.stack.min, val);
+        newStack.next = new MyStack();
+        newStack.prev = this.stack;
+        this.stack = newStack;
+    }
+
+    public void pop() {
+        this.stack = (this.stack.prev == null) ? new MyStack() : this.stack.prev;
+    }
+
+    public int top() {
+        return (int)this.stack.data;
+    }
+
+    public int getMin() {
+        return (int)this.stack.min;
+    }
+}
