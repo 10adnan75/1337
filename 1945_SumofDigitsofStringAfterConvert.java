@@ -1,3 +1,4 @@
+// Jul 20, 2023
 class Solution {
     public String getMoreLucky(String s) {
         StringBuilder sb = new StringBuilder();
@@ -26,5 +27,29 @@ class Solution {
             luckyNumber = makeLucky(luckyNumber);
         }
         return luckyNumber;
+    }
+}
+
+// Sep 2, 2024
+class Solution {
+    public int getLucky(String s, int k) {
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<s.length(); i++) {
+            sb.append((int)(s.charAt(i))-96);
+        }
+        s = sb.toString();
+        while (k-- > 0) {
+            s = doTransform(s);
+        }
+        return Integer.valueOf(s);
+    }
+
+    public String doTransform(String s) {
+        StringBuilder sb = new StringBuilder();
+        int sum = 0;
+        for (int i=0; i<s.length(); i++) {
+            sum += s.charAt(i) - '0';
+        }
+        return sum + "";
     }
 }
