@@ -1,4 +1,4 @@
-// Jul 20, 2023
+// Jul 20, 2023 - Intuitive solution
 class Solution {
     public String getMoreLucky(String s) {
         StringBuilder sb = new StringBuilder();
@@ -30,7 +30,7 @@ class Solution {
     }
 }
 
-// Sep 2, 2024
+// Sep 2, 2024 - Optimized solution
 class Solution {
     public int getLucky(String s, int k) {
         StringBuilder sb = new StringBuilder();
@@ -39,6 +39,9 @@ class Solution {
         }
         s = sb.toString();
         while (k-- > 0) {
+            if (s.length() == 1) {
+                return Integer.valueOf(s);
+            }
             s = doTransform(s);
         }
         return Integer.valueOf(s);
