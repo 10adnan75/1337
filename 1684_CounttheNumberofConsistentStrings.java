@@ -24,7 +24,7 @@ class Solution {
     }
 }
 
-// 6 ms, Using auxiliary array (Sep 9, 2024)
+// 6 ms, Using auxiliary array (Sep 11, 2024)
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) {
         int count = 0;
