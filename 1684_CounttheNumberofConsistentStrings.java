@@ -23,3 +23,27 @@ class Solution {
         return c;
     }
 }
+
+// 6 ms, Using auxiliary array (Sep 9, 2024)
+class Solution {
+    public int countConsistentStrings(String allowed, String[] words) {
+        int count = 0;
+        int[] freq = new int[26];
+        for (char c: allowed.toCharArray()) {
+            freq[c-'a']++;
+        }
+        for (String word: words) {
+            boolean flag = true;
+            for (char c: word.toCharArray()) {
+                if (freq[c-'a'] == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
