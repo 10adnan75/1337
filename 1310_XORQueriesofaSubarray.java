@@ -19,4 +19,18 @@ class Solution {
     }
 }
 
-// Prefix sum: Accepted?
+// Prefix sum: Accepted
+class Solution {
+    public int[] xorQueries(int[] arr, int[][] queries) {        
+        int[] ans = new int[queries.length];
+        int id = 0;
+        for (int[] query: queries) {
+            int xor = arr[query[0]];
+            for (int i=query[0]+1; i<=query[1]; i++) {
+                xor ^= arr[i];
+            }
+            ans[id++] = xor;
+        }
+        return ans;
+    }
+}
