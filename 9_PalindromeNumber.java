@@ -33,3 +33,18 @@ class Solution {
         return true;
     }
 }
+
+// Sep 18, 2024
+class Solution {
+    public boolean isPalindrome(int x) {
+        String s = x + "";
+        int lo = 0, hi = s.length()-1;
+        while (lo < hi) {
+            if (s.charAt(lo) != s.charAt(hi)) {
+                return false;
+            }
+            lo++; hi--;
+        }
+        return true;
+    }
+}
