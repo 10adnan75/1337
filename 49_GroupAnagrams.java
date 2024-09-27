@@ -71,3 +71,42 @@ class Solution {
         return new ArrayList<List<String>>(map.values());
     }
 }
+
+// Sep 26, 2024
+import java.util.*;
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<Integer>> map = new HashMap<>();
+        int i = 0;
+        for (String s: strs) {
+            String key = generateKey(s);
+            List<Integer> l = new ArrayList<>();
+            if (map.containsKey(key)) {
+                l = map.get(key);
+            }
+            l.add(i++);
+            map.put(key, l);
+        }
+        List<List<String>> ans = new ArrayList<>();
+        for (Map.Entry e: map.entrySet()) {
+            List<String> l = new ArrayList<>();
+            for (int id: (List<Integer>)e.getValue()) {
+                l.add(strs[id]);
+            }
+            ans.add(l);
+        }
+        return ans;
+    }
+
+    public String generateKey(String s) {
+        int[] freq = new int[26];
+        for (char c: s.toCharArray()) {
+            freq[c-'a']++;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i: freq) {
+            sb.append(i+",");
+        }
+        return sb.toString();
+    }
+}
