@@ -50,3 +50,49 @@ class Solution {
         }
     }
 }
+
+// My code: Oct 5, 2024
+class Solution {
+    private int m, n, islands;
+    private boolean[][] visited;
+
+    public int numIslands(char[][] grid) {
+        this.islands = 0; this.m = grid.length; this.n = grid[0].length;
+        this.visited = new boolean[this.m][this.n];
+        for (int i=0; i<this.m; i++) {
+            for (int j=0; j<this.n; j++) {
+                if (grid[i][j] == '1' && !this.visited[i][j]) {
+                    this.islands++;
+                    this.visited[i][j] = true;
+                    bfs(grid, i, j);
+                }
+            }
+        }
+        return this.islands;
+    }
+
+    public void bfs(char[][] grid, int currI, int currJ) {
+        Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
+        queue.add(new Pair(currI, currJ));
+        while (!queue.isEmpty()) {
+            Pair<Integer, Integer> p = queue.poll();
+            int i = p.getKey(), j = p.getValue();
+            if (i > 0 && grid[i-1][j] == '1' && !this.visited[i-1][j]) {
+                this.visited[i-1][j] = true;
+                queue.add(new Pair(i-1, j));
+            }      
+            if (i < this.m-1 && grid[i+1][j] == '1' && !this.visited[i+1][j]) {
+                this.visited[i+1][j] = true;
+                queue.add(new Pair(i+1, j));
+            }  
+            if (j > 0 && grid[i][j-1] == '1' && !this.visited[i][j-1]) {
+                this.visited[i][j-1] = true;
+                queue.add(new Pair(i, j-1));
+            }  
+            if (j < this.n-1 && grid[i][j+1] == '1' && !this.visited[i][j+1]) {
+                this.visited[i][j+1] = true;
+                queue.add(new Pair(i, j+1));
+            }  
+        }
+    }
+}
