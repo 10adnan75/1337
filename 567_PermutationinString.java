@@ -1,4 +1,4 @@
-// need to work on this!
+// Oct 6, 2024
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
         int m = s1.length(), n = s2.length();
@@ -12,13 +12,13 @@ class Solution {
         if (check(window.toString(), s1)) {
             return true;
         }
-        for (int i=m; i<n-m+1; i++) {
-            window.append(s2.charAt(i));
-            if (check(window.toString().substring(i-m+1, i+1), s1)) {
+        for (int i=1; i<=n-m; i++) {
+            window.append(s2.charAt(m+i-1));
+            if (check(window.substring(i, m+i), s1)) {
                 return true;
             }
         }
-        return check(s2.substring(n-m, n), s1);
+        return false;
     }
 
     public boolean check(String a, String b) {
