@@ -20,3 +20,21 @@ class Solution {
         return minLength(sb.toString());
     }
 }
+
+// Oct 7, 2024
+class Solution {
+    public int minLength(String s) {
+        int pair = 0;
+        Stack<Character> stack = new Stack<>();
+        for (int i=0; i<s.length(); i++) {
+            char c = s.charAt(i);
+            if ((c == 'B' && !stack.isEmpty() && stack.peek() == 'A') || (c == 'D' && !stack.isEmpty() && stack.peek() == 'C')) {
+                stack.pop();
+                pair += 2;
+                continue;
+            }
+            stack.push(c);
+        }
+        return s.length() - pair;
+    }
+}
