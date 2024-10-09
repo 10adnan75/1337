@@ -24,7 +24,6 @@ class Solution {
         return edges[cycle];
     }
 
-
     public int bfs(int n) {
         boolean[] visited = new boolean[n+1];
         Queue<Integer> queue = new LinkedList<>();
