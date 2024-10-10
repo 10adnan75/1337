@@ -45,3 +45,49 @@ class Solution {
         return graph;
     }
 }
+
+// Topological sort
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        ArrayList<Integer>[] graph = createGraph(numCourses, prerequisites);
+        return bfs(numCourses, graph);
+    }
+
+    public boolean bfs(int N, ArrayList<Integer>[] graph) {
+        int[] inDegree = new int[N];
+        for (int i=0; i<N; i++) {
+            for (int n: graph[i]) {
+                inDegree[n]++;
+            }
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i=0; i<N; i++) {
+            if (inDegree[i] == 0) {
+                queue.add(i);
+            }
+        }
+        int c = 0;
+        while (!queue.isEmpty()) {
+            c++;
+            int curr = queue.poll();
+            for (int n: graph[curr]) {
+                inDegree[n]--;
+                if (inDegree[n] == 0) {
+                    queue.add(n);
+                }
+            }
+        }
+        return c == N;
+    }
+
+    public ArrayList<Integer>[] createGraph(int N, int[][] edges) {
+        ArrayList<Integer>[] graph = new ArrayList[N];
+        for (int i=0; i<N; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int[] edge: edges) {
+            graph[edge[0]].add(edge[1]);
+        }
+        return graph;
+    }
+}
