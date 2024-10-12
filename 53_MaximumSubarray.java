@@ -38,3 +38,28 @@ class Solution {
         return divideAndConquer(0, nums.length-1, nums);
     }
 }
+
+// Oct 12, 2024
+class Solution {
+    public int maxSubArray(int[] nums) {
+        return dAndC(nums, 0, nums.length-1);
+    }
+
+    public int dAndC(int[] nums, int lo, int hi) {
+        if (lo == hi) {
+            return nums[lo];
+        }
+        int mid = (lo+hi)/2, lSum = Integer.MIN_VALUE, rSum = Integer.MIN_VALUE, sum = 0;
+        for (int i=mid+1; i<=hi; i++) {
+            sum += nums[i];
+            lSum = Math.max(lSum, sum);
+        }
+        sum = 0;
+        for (int i=mid; i>=lo; i--) {
+            sum += nums[i];
+            rSum = Math.max(rSum ,sum);
+        }
+        sum = Math.max(dAndC(nums, lo, mid), dAndC(nums, mid+1, hi));
+        return Math.max(lSum+rSum, sum);
+    }
+}
