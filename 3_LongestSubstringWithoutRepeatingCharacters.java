@@ -1,5 +1,4 @@
 // based on Sliding Window Algorithm
-
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.equals("")) {
@@ -18,5 +17,26 @@ class Solution {
             }
         }
         return maxLen;
+    }
+}
+
+// my code: Oct 27, 2024, 9:30 AM
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int lo = 0, hi = 0, max = 0;
+        while (hi < s.length()) {
+            char c = s.charAt(hi);
+            if (map.containsKey(c)) {
+                int i = map.get(c);
+                if (i >= lo) {
+                    lo = i + 1; 
+                } 
+            }
+            map.put(c, hi);
+            max = Math.max(max, hi-lo+1);
+            hi++;
+        }
+        return max;
     }
 }
