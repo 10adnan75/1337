@@ -32,3 +32,19 @@ class Solution {
         return (double)maxSum/k;
     }
 }
+
+// Oct 26, 2024
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        double windowAvg = 0.0;
+        for (int i=0; i<k; i++) {
+            windowAvg += nums[i];
+        }
+        double maxAvg = windowAvg;
+        for (int i=1; i<=nums.length-k; i++) {
+            windowAvg += (nums[k+i-1] - nums[i-1]);
+            maxAvg = Math.max(maxAvg, windowAvg);
+        }
+        return maxAvg / k;
+    }
+}
