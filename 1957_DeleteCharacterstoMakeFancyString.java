@@ -24,3 +24,22 @@ class Solution {
         sb.append(c);
     }
 }
+
+// October 31, 2024: Happy Halloween!
+class Solution {
+    public String makeFancyString(String s) {
+        if (s.length() < 3) {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(s.charAt(0)).append(s.charAt(1));
+        for (int i=2; i<s.length(); i++) {
+            char c = s.charAt(i);
+            if (s.charAt(i-1) == c && s.charAt(i-2) == c) {
+                continue;
+            }
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
