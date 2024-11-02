@@ -27,3 +27,24 @@ class Solution {
         return sentence.charAt(sentence.length()-1) == sentence.charAt(0);
     }
 }
+
+// Nov 1, 2024, 6:00 PM, USA
+class Solution {
+    public boolean isCircularSentence(String sentence) {
+        String[] words = sentence.split(" ");
+        int n = words.length;
+        if (!check(words[0], words[n-1])) {
+            return false;
+        }
+        for (int i=1; i<n; i++) {
+            if (!check(words[i], words[i-1])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean check(String a, String b) {
+        return a.charAt(0) == b.charAt(b.length()-1);
+    }
+}
