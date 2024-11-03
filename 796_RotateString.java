@@ -28,3 +28,27 @@ class Solution {
         return false;
     }
 }
+
+// Nov 2, 2024, USA
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        int n = s.length();
+        if (n != goal.length()) {
+            return false;
+        }
+        for (int i=1; i<=n; i++) {
+            if (goal.equals(modify(s, n, i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String modify(String s, int n, int idx) {
+        char[] chars = new char[n];
+        for (int i=0; i<n; i++) {
+            chars[(i+idx)%n] = s.charAt(i);
+        }
+        return new String(chars);
+    }
+}
