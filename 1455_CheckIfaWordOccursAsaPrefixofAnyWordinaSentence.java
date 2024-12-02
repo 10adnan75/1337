@@ -1,3 +1,4 @@
+// August 3, 2023, IND, 8:00
 class Solution {
     public int isPrefixOfWord(String sentence, String searchWord) {
         int wordNumber = 1;
@@ -19,5 +20,33 @@ class Solution {
             }
         }
         return -1;
+    }
+}
+
+// December 2, 2024, USA, 18:18
+class Solution {
+    public int isPrefixOfWord(String sentence, String searchWord) {
+        int index = 1;
+        for (String word: sentence.split(" ")) {
+            if (check(word, searchWord)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    public boolean check(String s, String t) {
+        int n = s.length(), m = t.length(), i = 0;
+        if (m > n) {
+            return false;
+        }
+        while (i < m) {
+            if (s.charAt(i) != t.charAt(i)) {
+                return false;
+            }
+            i++;
+        }
+        return true;
     }
 }
