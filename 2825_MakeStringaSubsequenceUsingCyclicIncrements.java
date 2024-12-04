@@ -1,3 +1,6 @@
+// Failing testcase:
+// Input: str1 = "cabc", str2 = "add"
+// Output: false
 class Solution {
     public boolean canMakeSubsequence(String str1, String str2) {
         int[] freq = new int[26];
@@ -20,3 +23,5 @@ class Solution {
         return true;
     }
 }
+
+// Accepted
