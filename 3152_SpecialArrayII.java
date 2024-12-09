@@ -1,3 +1,4 @@
+// Brute force, 535/536 testcases passed!
 class Solution {
     public boolean[] isArraySpecial(int[] nums, int[][] queries) {
         boolean[] ans = new boolean[queries.length];
@@ -25,3 +26,5 @@ class Solution {
         return true;
     }
 }
+
+// Another implementation
