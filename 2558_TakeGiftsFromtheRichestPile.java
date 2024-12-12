@@ -34,3 +34,22 @@ class Solution {
         return sum;
     }
 }
+
+// December 12, 2024, Seattle, WA, USA, 9:00 AM
+class Solution {
+    public long pickGifts(int[] gifts, int k) {
+        long sum = 0L;
+        PriorityQueue<Integer> priorityQ = new PriorityQueue<>(Collections.reverseOrder());
+        for (int gift: gifts) {
+            priorityQ.offer(gift);
+        }
+        while (k-- > 0) {
+            int gift = priorityQ.poll();
+            priorityQ.offer((int)Math.floor(Math.sqrt(gift)));
+        }
+        for (int gift: priorityQ) {
+            sum += gift;
+        }
+        return sum;
+    }
+}
