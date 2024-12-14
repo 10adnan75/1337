@@ -39,3 +39,48 @@ class Solution {
         return ans;
     }
 }
+
+// Credits: Sameer Mirza
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
+class Solution {
+    private final Map<Integer, PriorityQueue<Integer>> valueToIndicesMap = new HashMap<>();
+    private final PriorityQueue<Integer> numPriorityQueue = new PriorityQueue<>();
+
+    public long findScore(int[] nums) {
+        int n = nums.length, i = 0;
+        long ans = 0L;
+        boolean[] markedIndices = new boolean[n];
+
+        for (int num : nums) {
+            this.numPriorityQueue.add(num);
+            PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+            if (this.valueToIndicesMap.containsKey(num)) {
+                priorityQueue = this.valueToIndicesMap.get(num);
+            }
+            priorityQueue.add(i);
+            this.valueToIndicesMap.put(num, priorityQueue);
+            i++;
+        }
+
+        while (!this.numPriorityQueue.isEmpty()) {
+            int number = this.numPriorityQueue.poll();
+            if (this.valueToIndicesMap.containsKey(number)) {
+                PriorityQueue<Integer> priorityQueue = this.valueToIndicesMap.get(number);
+                if (!priorityQueue.isEmpty()) {
+                    int index = priorityQueue.poll();
+                    if (!markedIndices[index]) {
+                        ans += nums[index];
+                        markedIndices[index] = true;
+                        if (index-1 >= 0) markedIndices[index-1] = true;
+                        if (index+1 < n) markedIndices[index+1] = true;
+                    }
+                }
+            }
+        }
+
+        return ans;
+    }
+}
