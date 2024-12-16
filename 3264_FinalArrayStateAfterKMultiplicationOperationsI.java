@@ -1,5 +1,5 @@
 // Brute force
-// MH, IN
+// Los Angeles, CA, USA
 class Solution {
     public int[] getFinalState(int[] nums, int k, int multiplier) {
         while (k-- > 0) {
@@ -22,7 +22,7 @@ class Solution {
 }
 
 // Priority queue
-// WA, USA
+// Seattle, WA, USA
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
