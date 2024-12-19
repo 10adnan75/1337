@@ -1,3 +1,5 @@
+// Brute force
+// Solapur, MH, IN
 class Solution {
     public int[] finalPrices(int[] prices) {
         int[] finalPrice = new int[prices.length];
@@ -15,5 +17,24 @@ class Solution {
             finalPrice[i] = prices[i] - min;
         }
         return finalPrice;
+    }
+}
+
+// Monotonic stack
+// Los Angeles, CA, USA
+class Solution {
+    public int[] finalPrices(int[] prices) {
+        int n = prices.length;
+        Stack<Integer> stack = new Stack<>();
+        int[] ans = prices.clone();
+        stack.push(0);
+        for (int i=1; i<n; i++) {
+            int curr = prices[i];
+            while (!stack.empty() && prices[stack.peek()] >= curr) {
+                ans[stack.pop()] -= curr;
+            }
+            stack.push(i);
+        }
+        return ans;
     }
 }
