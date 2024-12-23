@@ -1,4 +1,5 @@
 // Masterpiece of a code written by me :)
+// IN
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int countZero = 0;
@@ -26,6 +27,7 @@ class Solution {
 }
 
 // Need to improve!
+// US
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int length = flowerbed.length, i = 1;
