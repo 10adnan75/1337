@@ -31,3 +31,39 @@ class Solution {
         return nums;
     }
 }
+
+// My code too, but when I am in the US, I have become somewhat pro! I miss you, Abbu <3
+// Feb 18, 2025, 6:44 PM
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int cZero = 0, prod = 1, n = nums.length, lastZero = 0;
+
+        for (int i=0; i<n; i++) {
+            if (nums[i] == 0) {
+                cZero++;
+                lastZero = i;
+                continue;
+            }
+
+            prod *= nums[i];
+        }
+
+        if (cZero != 0) {
+            for (int i=0; i<n; i++) {
+                nums[i] = 0;
+            }
+
+            if (cZero == 1) {
+                nums[lastZero] = prod;
+            }
+
+            return nums;
+        }
+
+        for (int i=0; i<n; i++) {
+            nums[i] = prod / nums[i];
+        }
+
+        return nums;
+    }
+}
