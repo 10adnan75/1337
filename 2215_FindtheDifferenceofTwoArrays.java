@@ -48,3 +48,42 @@ class Solution {
         return l;
     }
 }
+
+
+// Feb 18, 2025, 7:30 PM, US
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+
+        for (int n: nums1) {
+            set1.add(n);
+        } 
+
+        for (int n: nums2) {
+            set2.add(n);
+        } 
+
+        for (int n: nums1) {
+            if (!set2.contains(n)) {
+                l1.add(n);
+                set2.add(n);
+            }
+        }
+
+        for (int n: nums2) {
+            if (!set1.contains(n)) {
+                l2.add(n);
+                set1.add(n);
+            }
+        }
+
+        ans.add(l1);
+        ans.add(l2);
+
+        return ans;
+    }
+}
