@@ -20,3 +20,45 @@ class Solution {
         return top;
     }
 }
+
+// My code
+// Feb 26, 2025, 3:30 PM, US
+class Pair {
+    private int key;
+    private int value;
+
+    public Pair(int key, int value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public int getKey() {
+        return this.key;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+}
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> numsCount = new HashMap<>();
+        PriorityQueue<Pair> priorityQueue = new PriorityQueue<>((x, y) -> y.getValue() - x.getValue());
+        int[] ans = new int[k];
+
+        for (int num: nums) {
+            numsCount.put(num, numsCount.getOrDefault(num, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> e: numsCount.entrySet()) {
+            priorityQueue.add(new Pair(e.getKey(), e.getValue()));
+        }
+
+        for (int i=0; i<k; i++) {
+            ans[i] = priorityQueue.poll().getKey();
+        }
+
+        return ans;
+    }
+}
