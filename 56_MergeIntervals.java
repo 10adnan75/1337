@@ -24,3 +24,35 @@ class Solution {
         return result;
     }
 }
+
+// Feb 26, 2025, 1:42 PM, US
+// My code
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        List<int[]> mergedIntervals = new ArrayList<>();
+        int n = intervals.length;
+
+        Arrays.sort(intervals, (x, y) -> x[0] - y[0]);
+
+        for (int i=0; i<n; i++) {
+            int currStartTime = intervals[i][0];
+            int currEndTime = intervals[i][1];
+
+            while ((i+1 < n) && (intervals[i+1][0] <= currEndTime || intervals[i+1][1] <= currEndTime)) {
+                currEndTime = Math.max(currEndTime, intervals[i+1][1]);
+                i++;
+            }
+
+            mergedIntervals.add(new int[] {currStartTime, currEndTime});
+        }
+
+        int[][] ans = new int[mergedIntervals.size()][2];
+        int id = 0;
+
+        for (int[] interval: mergedIntervals) {
+            ans[id++] = interval;
+        }
+
+        return ans;
+    }
+}
