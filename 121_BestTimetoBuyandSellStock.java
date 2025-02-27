@@ -48,3 +48,23 @@ class Solution {
         return max;
     }
 }
+
+// My code: FEB 25, 2026, 5:35 PM, US
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int[] maxValueFromRight = new int[n];
+        maxValueFromRight[n-1] = prices[n-1];
+        int profit = 0;
+
+        for (int i=n-2; i>=0; i--) {
+            maxValueFromRight[i] = Math.max(maxValueFromRight[i+1], prices[i]);
+        }
+
+        for (int i=0; i<n; i++) {
+            profit = Math.max(profit, maxValueFromRight[i]-prices[i]);
+        }
+
+        return profit;
+    }
+}
