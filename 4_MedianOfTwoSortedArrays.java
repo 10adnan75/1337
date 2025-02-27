@@ -27,3 +27,31 @@ class Solution {
         throw new IllegalArgumentException();
     }
 }
+
+// Brute force
+// FEB 26, 2025, 8:10 PM, USA
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int l1 = nums1.length;
+        int l2 = nums2.length;
+        int n = l1 + l2;
+        int id = 0;
+        int[] arr = new int[n];
+
+        for (int i=0; i<l1; i++) {
+            arr[id++] = nums1[i];
+        }
+
+        for (int i=0; i<l2; i++) {
+            arr[id++] = nums2[i];
+        }
+
+        Arrays.sort(arr);
+
+        int mid = n / 2;
+        if (n % 2 == 0) {
+            return (arr[mid] + arr[mid-1]) / 2.0;
+        }
+        return arr[mid] / 1.0;
+    }
+}
