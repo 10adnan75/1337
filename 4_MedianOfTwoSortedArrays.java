@@ -49,9 +49,11 @@ class Solution {
         Arrays.sort(arr);
 
         int mid = n / 2;
+        
         if (n % 2 == 0) {
             return (arr[mid] + arr[mid-1]) / 2.0;
         }
+        
         return arr[mid] / 1.0;
     }
 }
